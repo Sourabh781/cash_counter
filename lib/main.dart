@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.orangeAccent,
+      ),
       debugShowCheckedModeBanner: false,
       title: 'CASH COUNTER',
       home: MyHomePage(),
@@ -44,7 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("CASH COUNTER"),
+        title: Center(
+            child: Text(
+          "CASH COUNTER",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        )),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -72,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.orangeAccent,
         onTap: _onItemTapped,
       ),
     ));
