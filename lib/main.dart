@@ -1,6 +1,6 @@
 import 'package:cash_counter/pages/new_count.dart';
 import 'package:cash_counter/pages/previous_count.dart';
-import 'package:cash_counter/pages/settings.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,7 +8,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _widgetOptions = <Widget>[
     PreviousCount(),
     NewCount(),
-    Settings(),
+    // Settings(),
   ];
 
   void _onItemTapped(int index) {
@@ -46,13 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: Text(
-          "CASH COUNTER",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        )),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -73,10 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.add),
             label: 'New Count',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.settings),
+          //   label: 'Settings',
+          // ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.orangeAccent,
