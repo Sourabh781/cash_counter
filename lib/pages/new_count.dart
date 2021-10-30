@@ -3,7 +3,7 @@ import 'package:cash_counter/model/notes.dart';
 import 'package:cash_counter/model/report.dart';
 import 'package:cash_counter/pages/report_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:number_to_words/number_to_words.dart';
 
@@ -27,15 +27,18 @@ class _NewCountState extends State<NewCount> {
     FlutterMoneyFormatter fmf = FlutterMoneyFormatter(
         amount: cn.total().toDouble() + nt.total().toDouble());
     return Scaffold(
-      backgroundColor: Colors.orange[50],
+      backgroundColor: Colors.orange[100],
       appBar: AppBar(
+        backgroundColor: Colors.brown[900],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               "CASH COUNTER",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: width / 22),
             ),
             Container(
               decoration: BoxDecoration(
@@ -46,9 +49,9 @@ class _NewCountState extends State<NewCount> {
                 child: Text(
                   "Rs.${fmf.output.withoutFractionDigits}",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: width / 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.orangeAccent,
+                    color: Colors.brown[900],
                   ),
                 ),
               ),
@@ -57,7 +60,6 @@ class _NewCountState extends State<NewCount> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(color: Colors.white12),
         child: ListView(
           children: [
             Container(
@@ -68,16 +70,18 @@ class _NewCountState extends State<NewCount> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Total case in notes',
+                    'Total cash in notes',
                     style: TextStyle(
-                        fontSize: width / 30, fontWeight: FontWeight.w500),
+                        color: Colors.brown,
+                        fontSize: width / 30,
+                        fontWeight: FontWeight.w500),
                   ),
                   Text(
                     "Rs.${nt.total().toString()}",
                     style: TextStyle(
                         fontSize: width / 30,
                         fontWeight: FontWeight.w500,
-                        color: Colors.green),
+                        color: Colors.brown),
                   )
                 ],
               ),
@@ -90,16 +94,18 @@ class _NewCountState extends State<NewCount> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Total case in coins',
+                    'Total cash in coins',
                     style: TextStyle(
-                        fontSize: width / 30, fontWeight: FontWeight.w500),
+                        color: Colors.brown,
+                        fontSize: width / 30,
+                        fontWeight: FontWeight.w500),
                   ),
                   Text(
                     "Rs.${cn.total().toString()}",
                     style: TextStyle(
                         fontSize: width / 30,
                         fontWeight: FontWeight.w500,
-                        color: Colors.green),
+                        color: Colors.brown),
                   )
                 ],
               ),
@@ -117,13 +123,16 @@ class _NewCountState extends State<NewCount> {
                   style: TextStyle(
                       fontSize: width / 26.5,
                       fontWeight: FontWeight.w500,
-                      color: Colors.green),
+                      color: Colors.brown),
                 ),
               ),
             ),
             Container(
               margin: EdgeInsets.only(
-                  left: width / 42, right: width / 42, top: width / 21),
+                  left: width / 42,
+                  right: width / 42,
+                  top: width / 21,
+                  bottom: width / 21),
               child: InkWell(
                 onTap: () {
                   rt.cn = cn;
@@ -139,7 +148,7 @@ class _NewCountState extends State<NewCount> {
                   );
                 },
                 child: Container(
-                  height: height / 15.7,
+                  height: height / 17,
                   child: Center(
                     child: Text(
                       'GENERATE REPORT',
@@ -150,7 +159,7 @@ class _NewCountState extends State<NewCount> {
                     ),
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.black54,
+                    color: Colors.brown[800],
                     borderRadius: BorderRadius.all(
                       Radius.circular(width / 117),
                     ),
@@ -173,6 +182,7 @@ class _NewCountState extends State<NewCount> {
           child: Column(
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   CustomRow(
@@ -195,11 +205,10 @@ class _NewCountState extends State<NewCount> {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2.0, color: Colors.blue),
+                          borderSide: BorderSide(width: 2, color: Colors.blue),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 2.0),
+                          borderSide: BorderSide(width: 2),
                         ),
                       ),
                     ),
@@ -857,7 +866,6 @@ class _CustomRowState extends State<CustomRow> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.only(top: width / 29),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

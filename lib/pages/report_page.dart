@@ -16,59 +16,41 @@ class ReportPage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     String formattedDate = DateFormat('dd-MM-yyyy').format(rt.dateTime);
     return Scaffold(
-      backgroundColor: Colors.orange[50],
+      backgroundColor: Colors.orange[100],
       appBar: AppBar(
+        backgroundColor: Colors.brown[900],
         iconTheme: IconThemeData(color: Colors.white),
         title: Center(
             child: Text(
           "CASH COUNTER",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: width / 22),
         )),
       ),
       body: Container(
         child: Center(
           child: Column(
             children: [
-              // Container(
-              //   padding: EdgeInsets.all(16),
-              //   alignment: Alignment.topRight,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.end,
-              //     children: [
-              //       Icon(
-              //         Icons.share_rounded,
-              //         size: 40,
-              //         color: Colors.black87,
-              //       ),
-              //       SizedBox(
-              //         width: 10,
-              //       ),
-              //       Icon(
-              //         Icons.save_rounded,
-              //         size: 40,
-              //         color: Colors.black87,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 15,
-              // ),
               Card(
                 margin: EdgeInsets.only(top: 50, left: 10, right: 10),
                 child: Container(
                     height: height * 1 / 2,
                     width: double.infinity,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: EdgeInsets.all(width / 60),
-                          child: Text(
-                            formattedDate,
-                            style: TextStyle(
-                                fontSize: width / 24,
-                                color: Colors.black54,
-                                fontWeight: FontWeight.bold),
+                          child: Center(
+                            child: Text(
+                              formattedDate,
+                              style: TextStyle(
+                                  fontSize: width / 24,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                         Container(
@@ -100,7 +82,7 @@ class ReportPage extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.orange),
+                                        color: Colors.brown),
                                   )),
                                 ],
                               ),
@@ -122,7 +104,7 @@ class ReportPage extends StatelessWidget {
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.orange))),
+                                              color: Colors.brown))),
                                 ],
                               ),
                               TableRow(
@@ -145,100 +127,148 @@ class ReportPage extends StatelessWidget {
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.orange))),
+                                              color: Colors.brown))),
                                 ],
                               ),
                             ],
                           ),
                         ),
                         SizedBox(
-                          height: 15,
+                          height: height / 63,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: width / 35),
+                          child: Text(
+                            'Notes Count',
+                            style: TextStyle(
+                                fontSize: width / 35,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.brown[200],
+                              borderRadius: BorderRadius.circular(3)),
+                          margin: EdgeInsets.only(
+                              left: width / 35, right: width / 25),
+                          height: height / 14,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              (rt.nt.noOfNotes("2000") > 0)
+                                  ? NoOfNote(rt: rt, label: '2000')
+                                  : Container(),
+                              (rt.nt.noOfNotes("500") > 0)
+                                  ? NoOfNote(rt: rt, label: '500')
+                                  : Container(),
+                              (rt.nt.noOfNotes("200") > 0)
+                                  ? NoOfNote(rt: rt, label: '200')
+                                  : Container(),
+                              (rt.nt.noOfNotes("100") > 0)
+                                  ? NoOfNote(rt: rt, label: '100')
+                                  : Container(),
+                              (rt.nt.noOfNotes("50") > 0)
+                                  ? NoOfNote(rt: rt, label: '50')
+                                  : Container(),
+                              (rt.nt.noOfNotes("20") > 0)
+                                  ? NoOfNote(rt: rt, label: '20')
+                                  : Container(),
+                              (rt.nt.noOfNotes("10") > 0)
+                                  ? NoOfNote(rt: rt, label: '10')
+                                  : Container(),
+                              (rt.nt.noOfNotes("5") > 0)
+                                  ? NoOfNote(rt: rt, label: '5')
+                                  : Container(),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: width / 35, top: width / 25),
+                          child: Text(
+                            'Coins Count',
+                            style: TextStyle(
+                                fontSize: width / 35,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                         Container(
                             decoration: BoxDecoration(
-                                color: Colors.orange[100],
+                                color: Colors.brown[200],
                                 borderRadius: BorderRadius.circular(3)),
                             margin: EdgeInsets.only(
-                                left: width / 35,
-                                top: width / 42,
-                                right: width / 25),
+                              left: width / 35,
+                              right: width / 25,
+                            ),
                             height: height / 14,
                             child: ListView(
-                              padding: EdgeInsets.all(8),
                               scrollDirection: Axis.horizontal,
                               children: [
-                                (rt.nt.noOfNotes("2000") > 0)
-                                    ? NoOfNote(rt: rt, label: '2000')
+                                (rt.cn.noOfNotes("10") > 0)
+                                    ? NoOfCoin(rt: rt, label: '10')
                                     : Container(),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                (rt.nt.noOfNotes("500") > 0)
-                                    ? NoOfNote(rt: rt, label: '500')
+                                (rt.cn.noOfNotes("5") > 0)
+                                    ? NoOfCoin(rt: rt, label: '5')
                                     : Container(),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                (rt.nt.noOfNotes("200") > 0)
-                                    ? NoOfNote(rt: rt, label: '200')
+                                (rt.cn.noOfNotes("2") > 0)
+                                    ? NoOfCoin(rt: rt, label: '2')
                                     : Container(),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                (rt.nt.noOfNotes("100") > 0)
-                                    ? NoOfNote(rt: rt, label: '100')
-                                    : Container(),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                (rt.nt.noOfNotes("50") > 0)
-                                    ? NoOfNote(rt: rt, label: '50')
-                                    : Container(),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                (rt.nt.noOfNotes("10") > 0)
-                                    ? NoOfNote(rt: rt, label: '10')
-                                    : Container(),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                (rt.nt.noOfNotes("5") > 0)
-                                    ? NoOfNote(rt: rt, label: '5')
+                                (rt.cn.noOfNotes("1") > 0)
+                                    ? NoOfCoin(rt: rt, label: '1')
                                     : Container(),
                               ],
                             )),
                         SizedBox(
-                          height: 15,
+                          height: height / 63,
                         ),
                         toWords(width)
                       ],
                     )),
               ),
+              Container(
+                child: InkWell(
+                  onTap: () async {
+                    DatabaseHelper.instance.insert({
+                      DatabaseHelper.creationDate: DateFormat('dd-MM-yyyy')
+                          .format(rt.dateTime)
+                          .toString(),
+                      DatabaseHelper.totalAmount: rt.cn.total() + rt.nt.total(),
+                      DatabaseHelper.ntwoThousand: rt.nt.twoThousand,
+                      DatabaseHelper.nfiveHundred: rt.nt.fiveHundred,
+                      DatabaseHelper.ntwoHundred: rt.nt.twoHundred,
+                      DatabaseHelper.nhundred: rt.nt.hundred,
+                      DatabaseHelper.nfifty: rt.nt.fifty,
+                      DatabaseHelper.ntwenty: rt.nt.twenty,
+                      DatabaseHelper.nten: rt.nt.ten,
+                      DatabaseHelper.nfive: rt.nt.five,
+                      DatabaseHelper.cten: rt.cn.ten,
+                      DatabaseHelper.cfive: rt.cn.five,
+                      DatabaseHelper.ctwo: rt.cn.two,
+                      DatabaseHelper.cone: rt.cn.one,
+                    });
 
-              InkWell(
-                onTap: () async {
-                  DatabaseHelper.instance.insert({
-                    DatabaseHelper.creationDate: rt.dateTime.toString(),
-                    DatabaseHelper.totalAmount: rt.cn.total() + rt.nt.total()
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(top: 15, left: 10, right: 10),
-                  height: height / 15.7,
-                  child: Center(
-                    child: Text(
-                      'SAVE',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: width / 21),
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: height / 63, left: width / 42, right: width / 42),
+                    height: height / 17,
+                    child: Center(
+                      child: Text(
+                        'SAVE',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: width / 21),
+                      ),
                     ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(width / 117),
+                    decoration: BoxDecoration(
+                      color: Colors.brown[800],
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(width / 117),
+                      ),
                     ),
                   ),
                 ),
@@ -252,7 +282,7 @@ class ReportPage extends StatelessWidget {
 
   Container toWords(double width) {
     return Container(
-      margin:
+      padding:
           EdgeInsets.only(left: width / 35, top: width / 42, right: width / 25),
       child: Text(
         NumberToWord()
@@ -262,7 +292,7 @@ class ReportPage extends StatelessWidget {
         style: TextStyle(
             fontSize: width / 27,
             fontWeight: FontWeight.bold,
-            color: Colors.green),
+            color: Colors.brown),
       ),
     );
   }
@@ -275,22 +305,55 @@ class NoOfNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          (rt.nt.noOfNotes(label)).toString(),
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-        ),
-        Text(
-          ' X ',
-          style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
-        ),
-        Text(label,
-            style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-                color: Colors.black45)),
-      ],
+    return Container(
+      margin: EdgeInsets.only(left: 16),
+      child: Row(
+        children: [
+          Text(
+            (rt.nt.noOfNotes(label)).toString(),
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+          ),
+          Text(
+            ' X ',
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
+          ),
+          Text(label,
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                  color: Colors.black45)),
+        ],
+      ),
+    );
+  }
+}
+
+class NoOfCoin extends StatelessWidget {
+  NoOfCoin({this.rt, this.label});
+  final String label;
+  final Report rt;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 16),
+      child: Row(
+        children: [
+          Text(
+            (rt.cn.noOfNotes(label)).toString(),
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+          ),
+          Text(
+            ' X ',
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
+          ),
+          Text(label,
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                  color: Colors.black45)),
+        ],
+      ),
     );
   }
 }

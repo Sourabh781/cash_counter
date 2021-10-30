@@ -12,6 +12,19 @@ class DatabaseHelper {
   static final columnId = 'id';
   static final creationDate = 'date';
   static final totalAmount = 'totalAmount';
+  static final ntwoThousand = 'ntwoThousand';
+  static final nfiveHundred = 'nfiveHundred';
+  static final ntwoHundred = 'ntwoHundred';
+  static final nhundred = 'nhundred';
+  static final nfifty = 'nfifty';
+  static final ntwenty = 'ntwenty';
+  static final nten = 'nten';
+  static final nfive = 'nfive';
+
+  static final cten = 'cten';
+  static final cfive = 'cfive';
+  static final ctwo = 'ctwo';
+  static final cone = 'cone';
 
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -32,12 +45,31 @@ class DatabaseHelper {
     return await openDatabase(path, version: _dbVersion, onCreate: _onCreate);
   }
 
-  Future _onCreate(Database db, int version) {
+  bool hasData() {
+    if (_database != null)
+      return true;
+    else
+      return false;
+  }
+
+  void _onCreate(Database db, int version) {
     db.execute('''
       CREATE TABLE $_tableName ( 
-        $columnId INTEGER PRIMARY KEY,
-        $creationDate TEXT NOT NULL,
-      $totalAmount TEXT NOT NULL)
+      $columnId INTEGER PRIMARY KEY,
+      $creationDate TEXT NOT NULL,
+      $totalAmount INTGER DEFAULT 0,
+      $ntwoThousand INTEGER DEFAULT 0,
+       $nfiveHundred INTEGER DEFAULT 0,
+        $ntwoHundred INTEGER DEFAULT 0,
+         $nhundred INTEGER DEFAULT 0,
+          $nfifty INTEGER DEFAULT 0,
+           $ntwenty INTEGER DEFAULT 0,
+            $nten INTEGER DEFAULT 0,
+             $nfive INTEGER DEFAULT 0,
+              $cten INTEGER DEFAULT 0,
+               $cfive INTEGER DEFAULT 0,
+                $ctwo INTEGER DEFAULT 0,
+                 $cone INTEGER DEFAULT 0)
       ''');
   }
 

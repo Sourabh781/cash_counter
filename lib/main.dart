@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.orangeAccent,
+        primaryColor: Colors.brown[900],
       ),
       debugShowCheckedModeBanner: false,
       title: 'CASH COUNTER',
@@ -48,12 +48,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      // drawer: Drawer(
-      //   child: ListView(
-      //     padding: EdgeInsets.zero,
-      //     children: <Widget>[],
-      //   ),
-      // ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         items: const <BottomNavigationBarItem>[
@@ -65,13 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.add),
             label: 'New Count',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.settings),
-          //   label: 'Settings',
-          // ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.orangeAccent,
+        selectedItemColor: Colors.brown[900],
         onTap: _onItemTapped,
       ),
     ));
